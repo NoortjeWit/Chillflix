@@ -1,3 +1,5 @@
 <ul class="list-group">
-    <li *ngFor="let video of videoList" class="list-group-item">{{ video.title }}, {{video.genre}}</li>
+    <li *ngFor="let video of videoList" class="list-group-item">
+        <app-video [video]="video"></app-video>
+    </li>
 </ul>
