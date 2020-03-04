@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 // import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 import { AppComponent } from './app.component';
+import { NavBarModule } from './nav-bar/nav-bar.module';
 import { VideoModule } from './video-module/video.module';
 
 @NgModule({
@@ -11,7 +12,8 @@ import { VideoModule } from './video-module/video.module';
   ],
   imports: [
     BrowserModule,
-    VideoModule,
+    NavBarModule,
+    VideoModule
     // NgbModule
   ],
   providers: [],
