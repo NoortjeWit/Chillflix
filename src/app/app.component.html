@@ -1,6 +1,8 @@
 <app-nav-bar (searchText)="lookForStuff($event)"></app-nav-bar>
 
-<app-youtube-player></app-youtube-player>
+<app-video-list [videoList]="filteredVideos" class="py-3 mx-3 my-3"></app-video-list>
+
+<app-youtube-player class="my-3 py-3 mx-3"></app-youtube-player>
 
 <app-video-list [videoList]="videos"></app-video-list>
 

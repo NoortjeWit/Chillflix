@@ -9,14 +9,16 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   videos: IVideo[] = videos;
+  filteredVideos: IVideo[] = [];
 
   lookForStuff(value){
+    this.filteredVideos =[];
     for(let x in this.videos){
-      if(this.videos[x].title.toLowerCase().includes(value.toLowerCase())){
-        console.log(this.videos[x].title);
+      if(this.videos[x].title.toLowerCase().includes(value.toLowerCase()) || this.videos[x].genre.toLowerCase().includes(value.toLowerCase()) ){
+        console.log("Title found: " + this.videos[x].title);
+        this.filteredVideos.push(this.videos[x]);
       }
     }
-    alert("It's working!!" + value);
   }
 
 }
