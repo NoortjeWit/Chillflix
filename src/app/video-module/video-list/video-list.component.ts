@@ -1,6 +1,5 @@
 import { IVideo } from './../video/video.interface';
 import { Component, OnInit, Input } from '@angular/core';
-import { VideoComponent } from '../video/video.component';
 
 @Component({
   selector: 'app-video-list',
@@ -9,10 +8,64 @@ import { VideoComponent } from '../video/video.component';
 })
 export class VideoListComponent implements OnInit {
   @Input() videoList: IVideo[];
+  slideConfig = {
+    "slidesToShow": 5,
+    "slidesToScroll": 5,
+    focusOnSelect: false,
+    responsive: [
+      {
+        breakpoint: 1400,
+        settings: {
+          slidesToShow: 4,
+          slidesToScroll: 4,
+          infinite: true,
+          dots: true
+        }
+      },
+      {
+        breakpoint: 1168,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3
+        }
+      },
+      {
+        breakpoint: 900,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2
+        }
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1
+        }
+      }
+    ]
+  };
 
   constructor() { }
 
   ngOnInit(): void {
   }
+
+
+  addSlide() {
+    this.videoList.push();
+  }
+
+  removeSlide() {
+    this.videoList.length = this.videoList.length - 1;
+  }
+
+  // afterChange(e) {
+  //   console.log('afterChange');
+  // }
+
+  // beforeChange(e) {
+  //   console.log('beforeChange');
+  // }
 
 }
