@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { YoutubePlayerModule } from './youtube-player/youtube-player.module';
+import { NavBarModule } from './nav-bar/nav-bar.module';
 
 @NgModule({
   declarations: [
@@ -12,6 +13,7 @@ import { YoutubePlayerModule } from './youtube-player/youtube-player.module';
   imports: [
     BrowserModule,
     YoutubePlayerModule,
+    NavBarModule
     // NgbModule
   ],
   providers: [],
