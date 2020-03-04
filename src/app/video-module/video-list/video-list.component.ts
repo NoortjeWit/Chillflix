@@ -1,3 +1,4 @@
+import { IVideo } from './../video/video.interface';
 import { Component, OnInit, Input } from '@angular/core';
 import { VideoComponent } from '../video/video.component';
 
@@ -7,7 +8,7 @@ import { VideoComponent } from '../video/video.component';
   styleUrls: ['./video-list.component.css']
 })
 export class VideoListComponent implements OnInit {
-  @Input() videoList: VideoComponent[];
+  @Input() videoList: IVideo[];
 
   constructor() { }
 

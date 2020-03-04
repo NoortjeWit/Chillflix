@@ -1,4 +1,6 @@
-export const videos = [
+import { IVideo } from './video-module/video/video.interface';
+
+export const videos: IVideo[] = [
   {
     title: "The Lion King",
     type: "film",
