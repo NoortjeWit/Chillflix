@@ -11,6 +11,6 @@ import { VideoListComponent } from './video-list/video-list.component';
     YouTubePlayerModule
   ],
   declarations: [YoutubePlayerComponent, VideoComponent, VideoListComponent],
-  exports: [YoutubePlayerComponent, VideoComponent]
+  exports: [YoutubePlayerComponent, VideoComponent, VideoListComponent]
 })
 export class VideoModule { }

@@ -1,1 +1,3 @@
-<p>video-list-component works!</p>
+<ul class="list-group">
+    <li *ngFor="let video of videoList" class="list-group-item">{{ video.title }}, {{video.genre}}</li>
+</ul>

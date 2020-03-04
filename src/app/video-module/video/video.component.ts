@@ -5,15 +5,15 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './video.component.html',
   styleUrls: ['./video.component.css']
 })
-export class VideoComponent implements OnInit {
-  video = {
-    title: 'Lion King',
-    image: 'imageURL'
-  };
+export class VideoComponent {
+  title: string;
+  type: string;
+  duration: number;
+  genre: string;
+  image: string;
+  videoId: string;
+  rating: number;
+  description: string;
 
   constructor() { }
-
-  ngOnInit(): void {
-  }
-
 }
