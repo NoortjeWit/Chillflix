@@ -9,4 +9,13 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   videos: VideoComponent[] = videos;
+
+  lookForStuff(value){
+    for(let x in this.videos){
+      if(this.videos[x].title.toLowerCase().includes(value.toLowerCase())){
+        console.log(this.videos[x].title);
+      }
+    }
+    alert("It's working!!" + value);
+  }
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-nav-bar',
@@ -6,10 +6,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./nav-bar.component.css']
 })
 export class NavBarComponent implements OnInit {
+  @Output() searchText = new EventEmitter();
 
   constructor() { }
 
   ngOnInit() {
+  }
+
+  lookForStuff(value){
+    console.log("passing through navbar");
+    this.searchText.next(value);
   }
 
 }
