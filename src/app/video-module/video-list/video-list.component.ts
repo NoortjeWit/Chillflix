@@ -51,6 +51,14 @@ export class VideoListComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  trackByFunction(index, item){
+    if(!item){
+      return null;
+    }
+    return index;
+
+  }
+
 
   // addSlide() {
   //   this.videoList.push();
