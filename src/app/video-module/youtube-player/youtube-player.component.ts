@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { IVideo } from './../video/video.interface';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   // template: '<youtube-player videoId="dQw4w9WgXcQ"></youtube-player>',
@@ -7,6 +8,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./youtube-player.component.css']
 })
 export class YoutubePlayerComponent implements OnInit {
+   @Input()
+   videoId: string;
 
   constructor() { }
 

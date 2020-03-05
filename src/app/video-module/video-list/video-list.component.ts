@@ -1,3 +1,4 @@
+import { PreviewService } from './../../shared/preview.service';
 import { IVideo } from './../video/video.interface';
 import { Component, OnInit, Input } from '@angular/core';
 
@@ -46,17 +47,20 @@ export class VideoListComponent implements OnInit {
     ]
   };
 
-  constructor() { }
+  constructor(private previewService: PreviewService) { }
 
   ngOnInit(): void {
   }
 
   trackByFunction(index, item){
-    if(!item){
+    if (!item) {
       return null;
     }
     return index;
+  }
 
+  selectVideo(video) {
+    this.previewService.addSelectedVideo(video);
   }
 
 

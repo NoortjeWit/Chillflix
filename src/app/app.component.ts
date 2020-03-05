@@ -1,15 +1,24 @@
+import { PreviewService } from './shared/preview.service';
 import { IVideo } from './video-module/video/video.interface';
 import { videos } from './videos';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
+
   videos: IVideo[] = videos;
   filteredVideos: IVideo[] = [];
+  selectedVideo: IVideo;
+
+constructor(public previewService: PreviewService) {}
+
+ngOnInit(): void {
+
+}
 
   lookForStuff(value){
     this.filteredVideos =[];

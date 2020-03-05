@@ -5,6 +5,7 @@ import { YouTubePlayerModule } from '@angular/youtube-player';
 import { YoutubePlayerComponent } from './youtube-player/youtube-player.component';
 import { VideoComponent } from './video/video.component';
 import { VideoListComponent } from './video-list/video-list.component';
+import { PreviewComponent } from './preview/preview.component';
 
 @NgModule({
   imports: [
@@ -12,7 +13,7 @@ import { VideoListComponent } from './video-list/video-list.component';
     YouTubePlayerModule,
     SlickCarouselModule
   ],
-  declarations: [YoutubePlayerComponent, VideoComponent, VideoListComponent],
-  exports: [YoutubePlayerComponent, VideoComponent, VideoListComponent]
+  declarations: [YoutubePlayerComponent, VideoComponent, VideoListComponent, PreviewComponent],
+  exports: [YoutubePlayerComponent, VideoComponent, VideoListComponent, PreviewComponent]
 })
 export class VideoModule { }

@@ -2,7 +2,9 @@
 
 <app-video-list *ngIf="filteredVideos.length > 0" [videoList]="filteredVideos" class="py-3 mx-3 my-3"></app-video-list>
 
-<app-youtube-player class="my-3 py-3 mx-3"></app-youtube-player>
+<app-preview *ngIf="previewService.getSelectedVideo() != undefined" [video]="previewService.getSelectedVideo()"></app-preview>
+
+<!-- <app-youtube-player class="my-3 py-3 mx-3"></app-youtube-player> -->
 
 <app-video-list [videoList]="videos"></app-video-list>
 

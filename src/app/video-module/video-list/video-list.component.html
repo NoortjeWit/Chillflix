@@ -1,7 +1,7 @@
 <div class="carousel-banner my-5 mx-auto">
     <ngx-slick-carousel class="carousel" #slickModal="slick-carousel" [config]="slideConfig">
         <div ngxSlickItem *ngFor="let video of videoList; trackBy: trackByFunction" class="slide text-center">
-            <app-video [video]="video"></app-video>
+            <app-video [video]="video" (click)="selectVideo(video)"></app-video>
         </div>
     </ngx-slick-carousel>
 </div>
