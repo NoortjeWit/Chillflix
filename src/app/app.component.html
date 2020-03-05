@@ -1,12 +1,10 @@
-<app-nav-bar (searchText)="lookForStuff($event)"></app-nav-bar>
+<app-nav-bar></app-nav-bar>
 
-<app-video-list *ngIf="filteredVideos.length > 0" [videoList]="filteredVideos" class="py-3 mx-3 my-3"></app-video-list>
+<!-- searched videos list -->
+<app-video-list *ngIf="lookForStuff().length > 0" [videoList]="lookForStuff()" class="py-3 mx-3 my-3"></app-video-list>
 
+<!-- preview of selected video -->
 <app-preview *ngIf="previewService.getSelectedVideo() != undefined" [video]="previewService.getSelectedVideo()"></app-preview>
 
-<!-- <app-youtube-player class="my-3 py-3 mx-3"></app-youtube-player> -->
-
+<!-- genre video bars -->
 <app-video-list [videoList]="videos"></app-video-list>
-
-
-<!-- <app-todo-list [todos]="todoList"></app-todo-list> -->
