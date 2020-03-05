@@ -9,8 +9,8 @@ import { Component, OnInit, Input } from '@angular/core';
 export class VideoListComponent implements OnInit {
   @Input() videoList: IVideo[];
   slideConfig = {
-    "slidesToShow": 5,
-    "slidesToScroll": 5,
+    slidesToShow: 5,
+    slidesToScroll: 5,
     focusOnSelect: false,
     responsive: [
       {
@@ -52,13 +52,13 @@ export class VideoListComponent implements OnInit {
   }
 
 
-  addSlide() {
-    this.videoList.push();
-  }
+  // addSlide() {
+  //   this.videoList.push();
+  // }
 
-  removeSlide() {
-    this.videoList.length = this.videoList.length - 1;
-  }
+  // removeSlide() {
+  //   this.videoList.length = this.videoList.length - 1;
+  // }
 
   // afterChange(e) {
   //   console.log('afterChange');
