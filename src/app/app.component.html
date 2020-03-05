@@ -1,7 +1,7 @@
-<app-nav-bar (searchText)="lookForStuff($event)"></app-nav-bar>
+<app-nav-bar></app-nav-bar>
 
-<app-video-list *ngIf="filteredVideos.length > 0" [videoList]="filteredVideos" class="py-3 mx-3 my-3"></app-video-list>
-
+<!-- <app-video-list *ngIf="filteredVideos.length > 0" [videoList]="videoService.getFilteredVideos(searchService.getSearchText())" class="py-3 mx-3 my-3"></app-video-list> -->
+<app-video-list *ngIf="lookForStuff().length > 0" [videoList]="lookForStuff()" class="py-3 mx-3 my-3"></app-video-list>
 <app-youtube-player class="my-3 py-3 mx-3"></app-youtube-player>
 
 <app-video-list [videoList]="videos"></app-video-list>

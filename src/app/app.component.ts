@@ -1,24 +1,29 @@
 import { IVideo } from './video-module/video/video.interface';
-import { videos } from './videos';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { VideoListService } from './shared/video-list.service';
+import { SearchTextService } from './shared/search-text.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
-  videos: IVideo[] = videos;
-  filteredVideos: IVideo[] = [];
+export class AppComponent implements OnInit{
+  videos: IVideo[];
+  filteredVideos: IVideo[];
 
-  lookForStuff(value){
-    this.filteredVideos =[];
-    for(let x in this.videos){
-      if(this.videos[x].title.toLowerCase().includes(value.toLowerCase()) || this.videos[x].genre.toLowerCase().includes(value.toLowerCase()) ){
-        console.log("Title found: " + this.videos[x].title);
-        this.filteredVideos.push(this.videos[x]);
-      }
-    }
+  constructor(public videoService: VideoListService, public searchService: SearchTextService){
+  }
+
+  ngOnInit(){
+    this.videos = this.videoService.getVideos();
+  }
+
+  lookForStuff(){
+    if(this.searchService.getSearchText() != undefined)
+      return this.videoService.getFilteredVideos(this.searchService.getSearchText());
+    else
+      return [];
   }
 
 }
