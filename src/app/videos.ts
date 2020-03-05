@@ -6,7 +6,7 @@ export const videos: IVideo[] = [
     type: "film",
     duration: 98,
     genre: "Animation",
-    image: "imgurl",
+    image: "assets/img/video-LionKing.png",
     videoId: "lFzVJEksoDY",
     rating: 9.8,
     description: "A lion and a lionness go to the graveyard."
@@ -16,7 +16,7 @@ export const videos: IVideo[] = [
     type: "film",
     duration: 82,
     genre: "Animation",
-    image: "imgurl",
+    image: "assets/img/video-Mulan.png",
     videoId: "HKH7_n425Ss",
     rating: 7.4,
     description: "A girl pretends to be a boy."
@@ -26,7 +26,7 @@ export const videos: IVideo[] = [
     type: "film",
     duration: 101,
     genre: "Animation",
-    image: "imgurl",
+    image: "assets/img/video-BeautyAndTheBeast.png",
     videoId: "tRlzmyveDHE",
     rating: 8.3,
     description: "Monster becomes man."
@@ -36,7 +36,7 @@ export const videos: IVideo[] = [
     type: "film",
     duration: 175,
     genre: "Drama",
-    image: "imgurl",
+    image: "assets/img/video-Titanic.png",
     videoId: "ezcvpLIyifU",
     rating: 7,
     description: "Iceberg"
@@ -46,7 +46,7 @@ export const videos: IVideo[] = [
     type: "film",
     duration: 197,
     genre: "Fantasy",
-    image: "imgurl",
+    image: "assets/img/video-LordOfTheRingsFellowshipOfTheRing.png",
     videoId: "V75dMMIW2B4",
     rating: 8.8,
     description: "Dwarves and orcs and wizards and elves."
@@ -56,7 +56,7 @@ export const videos: IVideo[] = [
     type: "film",
     duration: 142,
     genre: "Comedy",
-    image: "imgurl",
+    image: "assets/img/video-MrBeansHoliday.png",
     videoId: "hSxLUd8aly4",
     rating: 7.2,
     description: "Mini Cooper"
@@ -66,7 +66,7 @@ export const videos: IVideo[] = [
     type: "film",
     duration: 116,
     genre: "Comedy",
-    image: "imgurl",
+    image: "assets/img/video-AmericanPie1.png",
     videoId: "iUZ3Yxok6N8",
     rating: 6.3,
     description: "Do you love apple pie?"

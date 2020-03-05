@@ -1,6 +1,6 @@
 <app-nav-bar (searchText)="lookForStuff($event)"></app-nav-bar>
 
-<app-video-list [videoList]="filteredVideos" class="py-3 mx-3 my-3"></app-video-list>
+<app-video-list *ngIf="filteredVideos.length > 0" [videoList]="filteredVideos" class="py-3 mx-3 my-3"></app-video-list>
 
 <app-youtube-player class="my-3 py-3 mx-3"></app-youtube-player>
 

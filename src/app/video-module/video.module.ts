@@ -1,3 +1,4 @@
+import { SlickCarouselModule } from 'ngx-slick-carousel';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { YouTubePlayerModule } from '@angular/youtube-player';
@@ -8,7 +9,8 @@ import { VideoListComponent } from './video-list/video-list.component';
 @NgModule({
   imports: [
     CommonModule,
-    YouTubePlayerModule
+    YouTubePlayerModule,
+    SlickCarouselModule
   ],
   declarations: [YoutubePlayerComponent, VideoComponent, VideoListComponent],
   exports: [YoutubePlayerComponent, VideoComponent, VideoListComponent]

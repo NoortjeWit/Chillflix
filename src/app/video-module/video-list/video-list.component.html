@@ -1,5 +1,7 @@
-<ul class="list-group">
-    <li *ngFor="let video of videoList" class="list-group-item">
-        <app-video [video]="video"></app-video>
-    </li>
-</ul>
+<div class="carousel-banner my-5 mx-auto">
+    <ngx-slick-carousel class="carousel" #slickModal="slick-carousel" [config]="slideConfig">
+        <div ngxSlickItem *ngFor="let video of videoList" class="slide text-center">
+            <app-video [video]="video"></app-video>
+        </div>
+    </ngx-slick-carousel>
+</div>
