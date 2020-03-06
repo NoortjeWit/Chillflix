@@ -14,16 +14,16 @@ import { Observable } from 'rxjs';
 
 export class AppComponent implements OnInit{
   videos: Observable<IVideo[]>;
+  videosMusic: Observable<IVideo[]>;
   filteredVideos: IVideo[];
   selectedVideo: IVideo;
-  videoTest$: Observable<any>;
 
   constructor(public videoService: VideoListService, public searchService: SearchTextService, public previewService: PreviewService){
   }
 
   ngOnInit(){
     this.videos = this.videoService.getPopularVideos();
-    this.videoTest$ = this.videoService.getPopularVideos();
+    this.videosMusic = this.videoService.getPopularVideosByCategory(10);
   }
 
   lookForStuff(){
