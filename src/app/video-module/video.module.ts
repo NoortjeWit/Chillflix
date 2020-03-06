@@ -1,3 +1,4 @@
+import { VideoTitleLengthPipe } from './../shared/video-title-length.pipe';
 import { VideoDurationPipe } from './../shared/video-duration.pipe';
 import { ShortDescriptionPipe } from './../shared/short-description.pipe';
 import { SlickCarouselModule } from 'ngx-slick-carousel';
@@ -15,7 +16,7 @@ import { PreviewComponent } from './preview/preview.component';
     YouTubePlayerModule,
     SlickCarouselModule,
   ],
-  declarations: [YoutubePlayerComponent, VideoComponent, VideoListComponent, PreviewComponent, ShortDescriptionPipe, VideoDurationPipe],
-  exports: [YoutubePlayerComponent, VideoComponent, VideoListComponent, PreviewComponent, ShortDescriptionPipe, VideoDurationPipe]
+  declarations: [YoutubePlayerComponent, VideoComponent, VideoListComponent, PreviewComponent, ShortDescriptionPipe, VideoDurationPipe, VideoTitleLengthPipe],
+  exports: [YoutubePlayerComponent, VideoComponent, VideoListComponent, PreviewComponent, ShortDescriptionPipe, VideoDurationPipe, VideoTitleLengthPipe]
 })
 export class VideoModule { }
