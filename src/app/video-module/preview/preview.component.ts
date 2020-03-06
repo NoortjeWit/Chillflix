@@ -1,3 +1,4 @@
+
 import { IVideo } from './../video/video.interface';
 import { PreviewService } from './../../shared/preview.service';
 import { Component, OnInit, Input } from '@angular/core';

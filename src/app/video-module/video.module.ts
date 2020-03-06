@@ -1,3 +1,4 @@
+import { ShortDescriptionPipe } from './../shared/short-description.pipe';
 import { SlickCarouselModule } from 'ngx-slick-carousel';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -11,9 +12,9 @@ import { PreviewComponent } from './preview/preview.component';
   imports: [
     CommonModule,
     YouTubePlayerModule,
-    SlickCarouselModule
+    SlickCarouselModule,
   ],
-  declarations: [YoutubePlayerComponent, VideoComponent, VideoListComponent, PreviewComponent],
-  exports: [YoutubePlayerComponent, VideoComponent, VideoListComponent, PreviewComponent]
+  declarations: [YoutubePlayerComponent, VideoComponent, VideoListComponent, PreviewComponent, ShortDescriptionPipe],
+  exports: [YoutubePlayerComponent, VideoComponent, VideoListComponent, PreviewComponent, ShortDescriptionPipe]
 })
 export class VideoModule { }

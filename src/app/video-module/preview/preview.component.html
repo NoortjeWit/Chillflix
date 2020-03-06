@@ -9,7 +9,7 @@
                 <div class="col-md-4">- {{video.duration}} min</div>
                 <div class="col-md-4">- rating: {{video.rating}}</div>
             </div>
-            <div class="row"><i>{{video.description}}</i></div>
+            <div class="row"><i>{{video.description | shortDescription}}</i></div>
         </div>
         <app-youtube-player [videoId]="video.videoId" class="col-md-6 p-0"></app-youtube-player>
     </div>

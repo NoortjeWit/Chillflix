@@ -5,6 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { NavBarModule } from './nav-bar/nav-bar.module';
 import { VideoModule } from './video-module/video.module';
+import { ShortDescriptionPipe } from './shared/short-description.pipe';
 
 @NgModule({
   declarations: [
