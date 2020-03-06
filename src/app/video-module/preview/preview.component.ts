@@ -9,14 +9,22 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./preview.component.css']
 })
 export class PreviewComponent implements OnInit {
-  @Input()
-  video: IVideo;
+  @Input() video: IVideo;
+  fullDescription: Boolean = false;
+  descriptionToggleText: string = "show full description";
 
   constructor(public previewService: PreviewService) { }
 
   ngOnInit(): void {
     this.video = this.previewService.getSelectedVideo();
   }
-
+  descriptionLength(): void {
+    this.fullDescription = !this.fullDescription;
+    if (this.fullDescription) {
+      this.descriptionToggleText = "show less";
+    } else {
+      this.descriptionToggleText = "show full description";
+    }
+  }
 
 }

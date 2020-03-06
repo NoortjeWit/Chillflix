@@ -1,0 +1,19 @@
+.preview-container {
+  margin-top: 3rem;
+  vertical-align: center;
+}
+
+.desc-col {
+  padding: 2rem;
+}
+
+ul {
+  display: flex;
+  flex-direction: row;
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  margin-right: 2rem;
+}
