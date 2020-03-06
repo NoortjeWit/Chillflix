@@ -4,6 +4,7 @@ import { videos } from './videos';
 import { Component, OnInit } from '@angular/core';
 import { VideoListService } from './shared/video-list.service';
 import { SearchTextService } from './shared/search-text.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -12,15 +13,17 @@ import { SearchTextService } from './shared/search-text.service';
 })
 
 export class AppComponent implements OnInit{
-  videos: IVideo[];
+  videos: Observable<IVideo[]>;
   filteredVideos: IVideo[];
   selectedVideo: IVideo;
+  videoTest$: Observable<any>;
 
   constructor(public videoService: VideoListService, public searchService: SearchTextService, public previewService: PreviewService){
   }
 
   ngOnInit(){
-    this.videos = this.videoService.getVideos();
+    this.videos = this.videoService.getPopularVideos();
+    this.videoTest$ = this.videoService.getPopularVideos();
   }
 
   lookForStuff(){

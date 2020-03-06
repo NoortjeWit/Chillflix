@@ -7,4 +7,4 @@
 <app-preview *ngIf="previewService.getSelectedVideo() != undefined" [video]="previewService.getSelectedVideo()"></app-preview>
 
 <!-- genre video bars -->
-<app-video-list [videoList]="videos"></app-video-list>
+<app-video-list [videoList]="(videos | async)"></app-video-list>

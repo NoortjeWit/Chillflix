@@ -1,5 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
+
 import { AppComponent } from './app.component';
 import { NavBarModule } from './nav-bar/nav-bar.module';
 import { VideoModule } from './video-module/video.module';
@@ -11,7 +13,8 @@ import { VideoModule } from './video-module/video.module';
   imports: [
     BrowserModule,
     NavBarModule,
-    VideoModule
+    VideoModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
