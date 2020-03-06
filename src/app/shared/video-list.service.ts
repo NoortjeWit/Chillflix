@@ -6,8 +6,8 @@ import { videos } from '../videos';
   providedIn: 'root'
 })
 export class VideoListService {
-  videos: IVideo[] = videos;
-  filteredVideos: IVideo[] =[];
+  private videos: IVideo[] = videos;
+  private filteredVideos: IVideo[] =[];
 
   getVideos(){
     return this.videos;
