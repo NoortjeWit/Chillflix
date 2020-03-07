@@ -11,8 +11,8 @@
           <li><i class="fas fa-thumbs-up"></i> {{video.rating | number}}</li>
         </ul>
       </div>
-      <div class="row pt-3"><i>{{ video.description | shortDescription: fullDescription }}
-        <p (click)="descriptionLength()"><u>{{ descriptionToggleText }}</u></p></i></div>
+      <div class="row pt-3"><i>{{ video.description | shortDescription: previewService.fullDescription }}
+        <p (click)="descriptionLength()"><u>{{ previewService.descriptionText }}</u></p></i></div>
     </div>
     <div class="col-lg-6 p-0 text-center align-self-center">
       <app-youtube-player [videoId]="video.videoId" class="my-auto p-0" ></app-youtube-player>

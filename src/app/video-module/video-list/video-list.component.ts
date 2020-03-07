@@ -61,6 +61,8 @@ export class VideoListComponent implements OnInit {
 
   selectVideo(video) {
     this.previewService.addSelectedVideo(video);
+    this.previewService.setFullDescription(false);
+    this.previewService.setDescriptionText("show full description");
   }
 
 
