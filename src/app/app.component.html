@@ -7,5 +7,21 @@
 <app-preview *ngIf="previewService.getSelectedVideo() != undefined" [video]="previewService.getSelectedVideo()"></app-preview>
 
 <!-- genre video bars -->
-<app-video-list [videoList]="(videos | async)"></app-video-list>
+<h3 class="pt-3">Music</h3>
 <app-video-list [videoList]="(videosMusic | async)"></app-video-list>
+
+<h3>Movies</h3>
+<app-video-list [videoList]="(videosMovies| async)"></app-video-list>
+
+<h3>Comedy</h3>
+<app-video-list [videoList]="(videosComedy | async)"></app-video-list>
+
+<h3>Gaming</h3>
+<app-video-list [videoList]="(videosGaming | async)"></app-video-list>
+
+<h3>Pets & Animals</h3>
+<app-video-list [videoList]="(videosAnimals | async)"></app-video-list>
+
+<h3>Science & Technology</h3>
+<app-video-list [videoList]="(videosTechnology | async)"></app-video-list>
+

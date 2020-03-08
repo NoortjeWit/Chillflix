@@ -15,6 +15,11 @@ import { Observable } from 'rxjs';
 export class AppComponent implements OnInit{
   videos: Observable<IVideo[]>;
   videosMusic: Observable<IVideo[]>;
+  videosMovies: Observable<IVideo[]>;
+  videosComedy: Observable<IVideo[]>;
+  videosGaming: Observable<IVideo[]>;
+  videosAnimals: Observable<IVideo[]>;
+  videosTechnology: Observable<IVideo[]>;
   filteredVideos: IVideo[];
   selectedVideo: IVideo;
 
@@ -24,6 +29,11 @@ export class AppComponent implements OnInit{
   ngOnInit(){
     this.videos = this.videoService.getPopularVideos();
     this.videosMusic = this.videoService.getPopularVideosByCategory(10);
+    this.videosMovies = this.videoService.getPopularVideosByCategory(1);
+    this.videosComedy = this.videoService.getPopularVideosByCategory(23);
+    this.videosGaming = this.videoService.getPopularVideosByCategory(20);
+    this.videosAnimals = this.videoService.getPopularVideosByCategory(15);
+    this.videosTechnology = this.videoService.getPopularVideosByCategory(28);
   }
 
   lookForStuff(){
