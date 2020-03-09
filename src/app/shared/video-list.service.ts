@@ -9,7 +9,7 @@ import { Observable } from "rxjs";
   providedIn: "root"
 })
 export class VideoListService {
-  private apiKey: string = "AIzaSyDVKO0BdJZ-QN0iFju-0VPUjGS9LutIOo0";
+  private apiKey: string = "AIzaSyBWyCSXgf_0tXnmavsH9lRhcxV5aPA3SKM";
 
   //private videos: IVideo[] = videos;
   private videos: IVideo[];
@@ -58,7 +58,7 @@ export class VideoListService {
   }
 
   getPopularVideosByCategory(categoryId: number): Observable<IVideo[]> {
-    const url = `https://www.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=20&videoCategoryId=${categoryId}&key=${this.apiKey}`;
+    const url = `https://www.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=5&videoCategoryId=${categoryId}&key=${this.apiKey}`;
 
     return this.youtubeGetQuery(url);
   }

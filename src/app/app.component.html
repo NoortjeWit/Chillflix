@@ -5,7 +5,7 @@
 <app-video-list *ngIf="lookForStuff().length > 0" [videoList]="lookForStuff()" class="py-3 mx-3 my-3"></app-video-list>
 
 <!-- preview of selected video -->
-<app-preview *ngIf="previewService.getSelectedVideo() != undefined" [video]="previewService.getSelectedVideo()"></app-preview>
+<app-preview *ngIf="previewService.getSelectedVideo() != undefined" [video]="previewService.getSelectedVideo()" id="app-preview"></app-preview>
 
 <!-- genre video bars -->
 <h3 class="pt-3">Music</h3>
@@ -25,4 +25,3 @@
 
 <h3>Science & Technology</h3>
 <app-video-list [videoList]="(videosTechnology | async)"></app-video-list> -->
-
