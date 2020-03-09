@@ -1,6 +1,5 @@
 import { PreviewService } from './shared/preview.service';
 import { IVideo } from './video-module/video/video.interface';
-import { videos } from './videos';
 import { Component, OnInit } from '@angular/core';
 import { VideoListService } from './shared/video-list.service';
 import { SearchTextService } from './shared/search-text.service';

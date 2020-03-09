@@ -1,6 +1,7 @@
+import { categories } from './stubs/categories';
 import { Injectable } from "@angular/core";
 import { IVideo } from "../video-module/video/video.interface";
-import { videos, returnVideoListStubs } from "../videos";
+import { returnVideoListStubs } from "./stubs/videos";
 import { HttpClient } from "@angular/common/http";
 import { map } from "rxjs/operators";
 import { Observable, of } from "rxjs";
@@ -10,7 +11,7 @@ import { environment } from "src/environments/environment";
   providedIn: "root"
 })
 export class VideoListService {
-  private apiKey: string = "AIzaSyBWyCSXgf_0tXnmavsH9lRhcxV5aPA3SKM";
+  private apiKey: string = "AIzaSyBWyCSXgf_0tXnmavsH9lR hcxV5aPA3SKM";
 
   //private videos: IVideo[] = videos;
   private videos: IVideo[];
@@ -18,14 +19,20 @@ export class VideoListService {
   private categoryList: any;
 
   constructor(private client: HttpClient) {
-    this.client
-      .get(
-        `https://www.googleapis.com/youtube/v3/videoCategories?part=snippet&regionCode=US&key=${this.apiKey}`
-      )
-      .subscribe(message => {
-        this.categoryList = message;
-        console.log(message);
-      });
+    if (environment.enableStub) {
+      this.categoryList = categories;
+
+    } else {
+      this.client
+        .get(
+          `https://www.googleapis.com/youtube/v3/videoCategories?part=snippet&regionCode=US&key=${this.apiKey}`
+        )
+        .subscribe(message => {
+          this.categoryList = message;
+          console.log(message);
+        });
+    }
+
   }
 
   getVideos() {
