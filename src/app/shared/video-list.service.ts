@@ -59,13 +59,9 @@ export class VideoListService {
   }
 
   getPopularVideosByCategory(categoryId: number): Observable<IVideo[]> {
-<<<<<<< HEAD
-    const url = `https://www.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=5&videoCategoryId=${categoryId}&key=${this.apiKey}`;
-=======
     if (environment.enableStub) {
       console.log("stubs enabled");
       return returnVideoListStubs();
->>>>>>> 9753c374b0dfabff07a089d07eebba9e94b44dd6
 
       // Here read a json or stubbed ts file
     } else {
