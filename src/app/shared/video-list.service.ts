@@ -9,7 +9,8 @@ import { Observable } from "rxjs";
   providedIn: "root"
 })
 export class VideoListService {
-  private apiKey: string = "AIzaSyDVKO0BdJZ-QN0iFju-0VPUjGS9LutIOo0";
+  // private apiKey: string = "AIzaSyDVKO0BdJZ-QN0iFju-0VPUjGS9LutIOo0";
+  private apiKey: string = "AIzaSyBWyCSXgf_0tXnmavsH9lRhcxV5aPA3SKM";
 
   //private videos: IVideo[] = videos;
   private videos: IVideo[];
@@ -23,7 +24,6 @@ export class VideoListService {
       )
       .subscribe(message => {
         this.categoryList = message;
-        console.log(message);
       });
   }
 
@@ -35,30 +35,49 @@ export class VideoListService {
     this.videos.push(video);
   }
 
-  getFilteredVideos(searchText: string) {
-    this.filteredVideos = [];
-    for (let x in this.videos) {
-      if (
-        this.videos[x].title.toLowerCase().includes(searchText.toLowerCase()) ||
-        this.videos[x].genre.toLowerCase().includes(searchText.toLowerCase())
-      ) {
-        console.log("Title found: " + this.videos[x].title);
-        this.filteredVideos.push(this.videos[x]);
-      }
-    }
+  getFilteredVideos(searchText: string): Observable<IVideo> {
+    const url = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&type=video&q=${searchText}&key=${this.apiKey}`;
 
-    console.log(this.filteredVideos);
-    return this.filteredVideos;
+    return this.client.get(url).pipe(
+      map((value: any) => {
+        console.log(value);
+        return value.items.map(item => {
+          return {
+            title: item.snippet.title,
+            videoId: item.id.videoId,
+            type: item.kind,
+            duration: 0,
+            genre: this.findCategory(item.snippet.categoryId),
+            image: item.snippet.thumbnails.medium.url,
+            rating: 0,
+            description: item.snippet.description
+          } as IVideo;
+        });
+      })
+    );
+    // this.filteredVideos = [];
+    // for (let x in this.videos) {
+    //   if (
+    //     this.videos[x].title.toLowerCase().includes(searchText.toLowerCase()) ||
+    //     this.videos[x].genre.toLowerCase().includes(searchText.toLowerCase())
+    //   ) {
+    //     console.log("Title found: " + this.videos[x].title);
+    //     this.filteredVideos.push(this.videos[x]);
+    //   }
+    // }
+
+    // console.log(this.filteredVideos);
+    // return this.filteredVideos;
   }
 
   getPopularVideos(): Observable<IVideo[]> {
-    const url = `https://www.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=20&key=${this.apiKey}`;
+    const url = `https://www.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=5&key=${this.apiKey}`;
 
     return this.youtubeGetQuery(url);
   }
 
   getPopularVideosByCategory(categoryId: number): Observable<IVideo[]> {
-    const url = `https://www.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=20&videoCategoryId=${categoryId}&key=${this.apiKey}`;
+    const url = `https://www.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=5&videoCategoryId=${categoryId}&key=${this.apiKey}`;
 
     return this.youtubeGetQuery(url);
   }
@@ -72,6 +91,8 @@ export class VideoListService {
       }
     }
   }
+
+
 
   youtubeGetQuery(url): Observable<IVideo[]> {
     return this.client.get(url).pipe(

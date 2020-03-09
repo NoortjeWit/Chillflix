@@ -4,7 +4,7 @@ import { videos } from './videos';
 import { Component, OnInit } from '@angular/core';
 import { VideoListService } from './shared/video-list.service';
 import { SearchTextService } from './shared/search-text.service';
-import { Observable } from 'rxjs';
+import { Observable, EMPTY } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -20,7 +20,7 @@ export class AppComponent implements OnInit{
   videosGaming: Observable<IVideo[]>;
   videosAnimals: Observable<IVideo[]>;
   videosTechnology: Observable<IVideo[]>;
-  filteredVideos: IVideo[];
+  filteredVideos: Observable<IVideo[]>;
   selectedVideo: IVideo;
 
   constructor(public videoService: VideoListService, public searchService: SearchTextService, public previewService: PreviewService){
@@ -28,7 +28,7 @@ export class AppComponent implements OnInit{
 
   ngOnInit(){
     // this.videos = this.videoService.getPopularVideos();
-     this.videosMusic = this.videoService.getPopularVideosByCategory(10);
+    this.videosMusic = this.videoService.getPopularVideosByCategory(10);
     // this.videosMovies = this.videoService.getPopularVideosByCategory(1);
     // this.videosComedy = this.videoService.getPopularVideosByCategory(23);
     // this.videosGaming = this.videoService.getPopularVideosByCategory(20);
@@ -37,10 +37,12 @@ export class AppComponent implements OnInit{
   }
 
   lookForStuff(){
-    if(this.searchService.getSearchText() != undefined)
+    if(this.searchService.getSearchText() != undefined){
       return this.videoService.getFilteredVideos(this.searchService.getSearchText());
-    else
-      return [];
+    }
+    else{
+      return EMPTY;
+    }
   }
 
 }
