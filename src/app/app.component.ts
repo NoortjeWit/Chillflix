@@ -27,13 +27,13 @@ export class AppComponent implements OnInit{
   }
 
   ngOnInit(){
-    this.videos = this.videoService.getPopularVideos();
-    this.videosMusic = this.videoService.getPopularVideosByCategory(10);
-    this.videosMovies = this.videoService.getPopularVideosByCategory(1);
-    this.videosComedy = this.videoService.getPopularVideosByCategory(23);
-    this.videosGaming = this.videoService.getPopularVideosByCategory(20);
-    this.videosAnimals = this.videoService.getPopularVideosByCategory(15);
-    this.videosTechnology = this.videoService.getPopularVideosByCategory(28);
+    // this.videos = this.videoService.getPopularVideos();
+     this.videosMusic = this.videoService.getPopularVideosByCategory(10);
+    // this.videosMovies = this.videoService.getPopularVideosByCategory(1);
+    // this.videosComedy = this.videoService.getPopularVideosByCategory(23);
+    // this.videosGaming = this.videoService.getPopularVideosByCategory(20);
+    // this.videosAnimals = this.videoService.getPopularVideosByCategory(15);
+    // this.videosTechnology = this.videoService.getPopularVideosByCategory(28);
   }
 
   lookForStuff(){

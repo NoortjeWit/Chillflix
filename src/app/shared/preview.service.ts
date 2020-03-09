@@ -19,7 +19,8 @@ export class PreviewService {
   }
 
   toggleFullDescription() {
-    this.fullDescriptionChange.next(!this.fullDescription);
+    // this.fullDescriptionChange.next(!this.fullDescription);
+    this.fullDescription= !this.fullDescription;
     if (this.fullDescription) {
       this.descriptionTextChange.next("show full description");
     } else {

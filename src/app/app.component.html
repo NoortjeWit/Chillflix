@@ -1,6 +1,7 @@
 <app-nav-bar></app-nav-bar>
 
 <!-- searched videos list -->
+<h3 *ngIf="lookForStuff().length > 0">Search results</h3>
 <app-video-list *ngIf="lookForStuff().length > 0" [videoList]="lookForStuff()" class="py-3 mx-3 my-3"></app-video-list>
 
 <!-- preview of selected video -->
@@ -10,7 +11,7 @@
 <h3 class="pt-3">Music</h3>
 <app-video-list [videoList]="(videosMusic | async)"></app-video-list>
 
-<h3>Movies</h3>
+<!-- <h3>Movies</h3>
 <app-video-list [videoList]="(videosMovies| async)"></app-video-list>
 
 <h3>Comedy</h3>
@@ -23,5 +24,5 @@
 <app-video-list [videoList]="(videosAnimals | async)"></app-video-list>
 
 <h3>Science & Technology</h3>
-<app-video-list [videoList]="(videosTechnology | async)"></app-video-list>
+<app-video-list [videoList]="(videosTechnology | async)"></app-video-list> -->
 
