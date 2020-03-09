@@ -1,9 +1,10 @@
 import { Injectable } from "@angular/core";
 import { IVideo } from "../video-module/video/video.interface";
-import { videos } from "../videos";
+import { videos, returnVideoListStubs } from "../videos";
 import { HttpClient } from "@angular/common/http";
 import { map } from "rxjs/operators";
-import { Observable } from "rxjs";
+import { Observable, of } from "rxjs";
+import { environment } from "src/environments/environment";
 
 @Injectable({
   providedIn: "root"
@@ -58,9 +59,19 @@ export class VideoListService {
   }
 
   getPopularVideosByCategory(categoryId: number): Observable<IVideo[]> {
-    const url = `https://www.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=20&videoCategoryId=${categoryId}&key=${this.apiKey}`;
+    if (environment.enableStub) {
+      console.log("stubs enabled");
+      return returnVideoListStubs();
 
-    return this.youtubeGetQuery(url);
+      // Here read a json or stubbed ts file
+    } else {
+      console.log("stubs disabled");
+      const url = `https://www.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=20&videoCategoryId=${categoryId}&key=${this.apiKey}`;
+
+      return this.youtubeGetQuery(url);
+    }
+
+    // Here do the real call
   }
 
   findCategory(categoryId: string) {
