@@ -1,4 +1,5 @@
-import { IVideo } from './video-module/video/video.interface';
+import { IVideo } from "./video-module/video/video.interface";
+import { Observable, of } from "rxjs";
 
 export const videos: IVideo[] = [
   {
@@ -72,3 +73,7 @@ export const videos: IVideo[] = [
     description: "Do you love apple pie?"
   }
 ];
+
+export const returnVideoListStubs = (): Observable<IVideo[]> => {
+  return of(videos);
+};
