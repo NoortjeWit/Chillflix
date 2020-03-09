@@ -18,11 +18,11 @@ export class PreviewComponent implements OnInit {
   }
 
   descriptionLength(): void {
-    this.previewService.toggleFullDescription();
+    this.previewService.fullDescription = !this.previewService.fullDescription;
     if (this.previewService.fullDescription) {
-      this.previewService.setDescriptionText("show less");
+      this.previewService.descriptionText = "show less";
     } else {
-      this.previewService.setDescriptionText("show full description");
+      this.previewService.descriptionText = "show full description";
     }
   }
 

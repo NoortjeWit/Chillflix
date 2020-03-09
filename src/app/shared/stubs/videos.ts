@@ -1,4 +1,5 @@
-import { IVideo } from './video-module/video/video.interface';
+import { IVideo } from "./../../video-module/video/video.interface";
+import { Observable, of } from "rxjs";
 
 export const videos: IVideo[] = [
   {
@@ -8,7 +9,7 @@ export const videos: IVideo[] = [
     genre: "Animation",
     image: "assets/img/video-LionKing.png",
     videoId: "lFzVJEksoDY",
-    rating: 9.8,
+    rating: 10937202,
     description: "A lion and a lionness go to the graveyard."
   },
   {
@@ -18,7 +19,7 @@ export const videos: IVideo[] = [
     genre: "Animation",
     image: "assets/img/video-Mulan.png",
     videoId: "HKH7_n425Ss",
-    rating: 7.4,
+    rating: 4270003,
     description: "A girl pretends to be a boy."
   },
   {
@@ -28,7 +29,7 @@ export const videos: IVideo[] = [
     genre: "Animation",
     image: "assets/img/video-BeautyAndTheBeast.png",
     videoId: "tRlzmyveDHE",
-    rating: 8.3,
+    rating: 3583028,
     description: "Monster becomes man."
   },
   {
@@ -38,7 +39,7 @@ export const videos: IVideo[] = [
     genre: "Drama",
     image: "assets/img/video-Titanic.png",
     videoId: "ezcvpLIyifU",
-    rating: 7,
+    rating: 1948,
     description: "Iceberg"
   },
   {
@@ -72,3 +73,7 @@ export const videos: IVideo[] = [
     description: "Do you love apple pie?"
   }
 ];
+
+export const returnVideoListStubs = (): Observable<IVideo[]> => {
+  return of(videos);
+};
