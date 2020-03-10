@@ -4,7 +4,7 @@ import { IVideo } from "../video-module/video/video.interface";
 import { returnVideoListStubs } from "./stubs/videos";
 import { HttpClient } from "@angular/common/http";
 import { map } from "rxjs/operators";
-import { Observable, of } from "rxjs";
+import { Observable, of, EMPTY } from "rxjs";
 import { environment } from "src/environments/environment";
 
 @Injectable({
@@ -51,11 +51,13 @@ export class VideoListService {
   setFilteredVideos2(searchText: string) {
     //const url = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&type=video&q=${searchText}&key=${this.apiKey}`;
     const url = `http://localhost:4200/assets/searchData.json`;
+    this.filteredVideos = EMPTY;
 
     this.filteredVideos = this.client.get(url).pipe(
       map((value: any) => {
+        // console.log(value);
         return value.items.map(item => {
-          //console.log(item);
+          // console.log(item);
           return {
             title: item.snippet.title,
             videoId: item.id.videoId,
@@ -70,7 +72,8 @@ export class VideoListService {
       })
     );
 
-    this.filteredVideos.subscribe(item => console.log(item));
+    // this.filteredVideos.subscribe(item => console.log(item));
+
 
   }
 

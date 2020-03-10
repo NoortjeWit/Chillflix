@@ -4,6 +4,7 @@
 <h3 *ngIf="searchService.getSearchText() != undefined">Search results</h3>
 <app-video-list *ngIf="searchService.getSearchText() != undefined" [videoList]="(lookForStuff() | async)" class="py-3 mx-3 my-3"></app-video-list>
 
+{{filteredVideos | async | json}}
 
 <!-- preview of selected video -->
 <app-preview *ngIf="previewService.getSelectedVideo() != undefined" [video]="previewService.getSelectedVideo()" id="app-preview"></app-preview>
@@ -27,4 +28,4 @@
 <h3>Science & Technology</h3>
 <app-video-list [videoList]="(videosTechnology | async)"></app-video-list> -->
 
-<router-outlet></router-outlet>
+<!-- <router-outlet></router-outlet> -->
