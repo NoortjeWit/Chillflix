@@ -1,13 +1,15 @@
-import { NotFoundComponent } from './not-found/not-found.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-
-import { AppComponent } from './app.component';
+import { AppRoutingModule } from './app-routing.module';
 import { NavBarModule } from './nav-bar/nav-bar.module';
 import { VideoModule } from './video-module/video.module';
-import { AppRoutingModule } from './app-routing.module';
+import { AdminModule} from './admin-module/admin.module';
+
+import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
+import { NotFoundComponent } from './not-found/not-found.component';
+
 
 @NgModule({
   declarations: [
@@ -20,7 +22,8 @@ import { HomeComponent } from './home/home.component';
     NavBarModule,
     VideoModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    AdminModule
   ],
   providers: [],
   bootstrap: [AppComponent]

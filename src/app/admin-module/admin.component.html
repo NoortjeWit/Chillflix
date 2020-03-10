@@ -1,0 +1,51 @@
+<div class="container text-center w-75 mt-3">
+  <h1>Add a new movie</h1>
+
+    <form [formGroup]="addMovieForm" (ngSubmit)="saveMovie()">
+      <div class="form-row ">
+      <div class="col-sm-6">
+        <div class="form-group w-75 m-auto">
+          <label for="title">Title *</label>
+          <input type="text" id="title" class="form-control" formControlName="title" required>
+        </div>
+        <div class="form-group w-75 m-auto">
+          <label for="description">Description</label>
+          <input type="text" id="description" class="form-control" formControlName="description">
+        </div>
+        <div class="form-group w-75 m-auto">
+          <label for="genre">Genre *</label>
+          <input type="text" id="genre" class="form-control" formControlName="genre" required>
+        </div>
+        <div class="form-group w-75 m-auto">
+          <label for="type">Type</label>
+          <input type="text" id="type" class="form-control" formControlName="type">
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="form-group w-75 m-auto">
+          <label for="videoid">Video ID *</label>
+          <input type="text" id="videoid" class="form-control" formControlName="videoId" required>
+        </div>
+        <div class="form-group w-75 m-auto">
+          <label for="rating">Likes</label>
+          <input type="number" id="rating" class="form-control" formControlName="rating">
+        </div>
+        <div class="form-group w-75 m-auto">
+          <label for="duration">Duration</label>
+          <input type="number" id="duration" class="form-control" formControlName="duration">
+        </div>
+        <div class="form-group w-75 m-auto">
+          <label for="image">Image</label>
+          <input type="text" id="image" class="form-control" formControlName="image">
+        </div>
+      </div>
+    </div>
+
+
+  {{addMovieForm.status}}
+  <button type="submit" class="btn btn-success mx-3 my-3">Submit</button>
+  <button type="reset" class="btn btn-info mx-3 my-3">Reset</button>
+  </form>
+
+
+</div>
