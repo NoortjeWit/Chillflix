@@ -1,0 +1,21 @@
+
+  <li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+      aria-haspopup="true" aria-expanded="false">
+      <i class="fa fa-user-circle fa-2x" aria-hidden="true"></i>
+    </a>
+
+    <div *ngIf="loginService.loggedIn" class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+      <span class="dropdown-item"><img src="{{ loginService.user.photoUrl }}"></span>
+      <span class="dropdown-item">Welcome, {{ loginService.user.name }}</span>
+      <a class="dropdown-item" href="#"><i class="fa fa-users" aria-hidden="true"></i> Accounts</a>
+      <a class="dropdown-item" href="#"><i class="fa fa-cog" aria-hidden="true"></i> Settings</a>
+      <div class="dropdown-divider"></div>
+      <a class="dropdown-item" href="#" (click)="signOut();"><i class="fa fa-sign-out" aria-hidden="true"></i> Log out</a>
+    </div>
+
+    <div *ngIf="!loginService.loggedIn" class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+      <a class="dropdown-item" href="#" (click)="signInWithGoogle()"><i class="fa fa-users" aria-hidden="true"></i> Log in</a>
+    </div>
+
+  </li>
