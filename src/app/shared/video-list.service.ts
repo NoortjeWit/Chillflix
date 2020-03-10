@@ -11,12 +11,13 @@ import { environment } from "src/environments/environment";
   providedIn: "root"
 })
 export class VideoListService {
-  private apiKey: string = "AIzaSyDVKO0BdJZ-QN0iFju-0VPUjGS9LutIOo0";
+  // private apiKey: string = "AIzaSyDVKO0BdJZ-QN0iFju-0VPUjGS9LutIOo0";
   //private apiKey: string = "AIzaSyBWyCSXgf_0tXnmavsH9lRhcxV5aPA3SKM";
+  private apiKey: string = "AIzaSyBzcxTIAnAie2aFS_BD2KuXncrwChVLNDQ";
 
   //private videos: IVideo[] = videos;
   private videos: IVideo[];
-  private filteredVideos:Observable<IVideo[]>;
+  private filteredVideos: Observable<IVideo[]>;
   private categoryList: any;
 
   constructor(private client: HttpClient) {
@@ -76,9 +77,15 @@ export class VideoListService {
 
 
   getPopularVideos(): Observable<IVideo[]> {
-    const url = `https://www.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=5&key=${this.apiKey}`;
+    if (environment.enableStub) {
+      console.log("stubs enabled");
+      return returnVideoListStubs();
+    }
+    else {
+      const url = `https://www.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=5&key=${this.apiKey}`;
 
-    return this.youtubeGetQuery(url);
+      return this.youtubeGetQuery(url);
+    }
   }
 
   getPopularVideosByCategory(categoryId: number): Observable<IVideo[]> {
