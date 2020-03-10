@@ -28,6 +28,7 @@ export class AppComponent implements OnInit{
   ngOnInit(){
     // this.videos = this.videoService.getPopularVideos();
     this.videosMusic = this.videoService.getPopularVideosByCategory(10);
+    this.filteredVideos = this.videoService.getFilteredVideos();
     // this.videosMovies = this.videoService.getPopularVideosByCategory(1);
     // this.videosComedy = this.videoService.getPopularVideosByCategory(23);
     // this.videosGaming = this.videoService.getPopularVideosByCategory(20);
@@ -35,9 +36,9 @@ export class AppComponent implements OnInit{
     // this.videosTechnology = this.videoService.getPopularVideosByCategory(28);
   }
 
-  lookForStuff(){
+  lookForStuff() {
     if(this.searchService.getSearchText() != undefined){
-      return this.videoService.getFilteredVideos(this.searchService.getSearchText());
+      return this.videoService.getFilteredVideos();
     }
     else{
       return EMPTY;

@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { VideoListService } from './video-list.service';
 
 @Injectable({
   providedIn: 'root'
@@ -6,8 +7,11 @@ import { Injectable } from '@angular/core';
 export class SearchTextService {
   searchText: string;
 
+  constructor(private videoService: VideoListService) { }
+
   setSearchText(text: string){
     this.searchText = text;
+    this.videoService.setFilteredVideos2(this.searchText);
   }
 
   getSearchText(){
@@ -19,6 +23,6 @@ export class SearchTextService {
     return this.searchText;
   }
 
-constructor() { }
+
 
 }

@@ -11,12 +11,12 @@ import { environment } from "src/environments/environment";
   providedIn: "root"
 })
 export class VideoListService {
-  // private apiKey: string = "AIzaSyDVKO0BdJZ-QN0iFju-0VPUjGS9LutIOo0";
-  private apiKey: string = "AIzaSyBWyCSXgf_0tXnmavsH9lRhcxV5aPA3SKM";
+  private apiKey: string = "AIzaSyDVKO0BdJZ-QN0iFju-0VPUjGS9LutIOo0";
+  //private apiKey: string = "AIzaSyBWyCSXgf_0tXnmavsH9lRhcxV5aPA3SKM";
 
   //private videos: IVideo[] = videos;
   private videos: IVideo[];
-  private filteredVideos: IVideo[] = [];
+  private filteredVideos:Observable<IVideo[]>;
   private categoryList: any;
 
   constructor(private client: HttpClient) {
@@ -44,13 +44,18 @@ export class VideoListService {
     this.videos.push(video);
   }
 
-  getFilteredVideos(searchText: string): Observable<IVideo> {
-    const url = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&type=video&q=${searchText}&key=${this.apiKey}`;
+  getFilteredVideos(): Observable<IVideo[]> {
+    return this.filteredVideos;
+  }
 
-    return this.client.get(url).pipe(
+  setFilteredVideos2(searchText: string) {
+    //const url = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&type=video&q=${searchText}&key=${this.apiKey}`;
+    const url = `http://localhost:4200/assets/searchData.json`;
+
+    this.filteredVideos = this.client.get(url).pipe(
       map((value: any) => {
-        console.log(value);
         return value.items.map(item => {
+          //console.log(item);
           return {
             title: item.snippet.title,
             videoId: item.id.videoId,
@@ -64,20 +69,11 @@ export class VideoListService {
         });
       })
     );
-    // this.filteredVideos = [];
-    // for (let x in this.videos) {
-    //   if (
-    //     this.videos[x].title.toLowerCase().includes(searchText.toLowerCase()) ||
-    //     this.videos[x].genre.toLowerCase().includes(searchText.toLowerCase())
-    //   ) {
-    //     console.log("Title found: " + this.videos[x].title);
-    //     this.filteredVideos.push(this.videos[x]);
-    //   }
-    // }
 
-    // console.log(this.filteredVideos);
-    // return this.filteredVideos;
+    this.filteredVideos.subscribe(item => console.log(item));
+
   }
+
 
   getPopularVideos(): Observable<IVideo[]> {
     const url = `https://www.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=5&key=${this.apiKey}`;
