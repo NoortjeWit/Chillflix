@@ -21,6 +21,7 @@ export class HomeComponent implements OnInit {
   videosTechnology: Observable<IVideo[]>;
   filteredVideos: Observable<IVideo[]>;
   selectedVideo: IVideo;
+  videosLiked: Observable<IVideo[]>;
 
 
   videoHeaderTest: Observable<IVideo[]>;
@@ -37,6 +38,8 @@ export class HomeComponent implements OnInit {
     // this.videosGaming = this.videoService.getPopularVideosByCategory(20);
     // this.videosAnimals = this.videoService.getPopularVideosByCategory(15);
     // this.videosTechnology = this.videoService.getPopularVideosByCategory(28);
+
+    this.videosLiked = this.videoService.getLikedVideos();
   }
 
   lookForStuff() {

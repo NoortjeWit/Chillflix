@@ -108,9 +108,22 @@ export class VideoListService {
   }
 
   getSingleVideoTest() {
-    const url = `https://www.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&id=Ks-_Mh1QhMc&key=${this.apiKey}`;
+    // const url = `https://www.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&id=Ks-_Mh1QhMc`;
 
-    return this.youtubeGetQuery(url);
+    // return this.youtubeGetQuery(url);
+  }
+
+  getLikedVideos() {
+    if (environment.enableStub) {
+      console.log("stubs enabled - liked videos from YouTube API retrieved");
+      const url = `https://www.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&maxResults=5&myRating=like`;
+
+      return this.youtubeGetQuery(url);
+    } else {
+      const url = `https://www.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&maxResults=5&myRating=like`;
+
+      return this.youtubeGetQuery(url);
+    }
   }
 
   findCategory(categoryId: string) {

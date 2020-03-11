@@ -13,12 +13,12 @@ export class AuthTokenInterceptor implements HttpInterceptor {
 	intercept(req: HttpRequest<any>, next: HttpHandler):
 		Observable<HttpEvent<any>> {
 		if (this.loginService.user) {
-			this.token = this.loginService.user.idToken;
+			this.token = this.loginService.user.authToken;
 			console.log(this.loginService.user);
 			if (req.url.includes("https://www.googleapis.com/youtube")) {
 				req = req.clone(
 					{
-						headers: req.headers.set('Authorization', `Bearer ${this.token}`)
+            headers: req.headers.set('Authorization', `Bearer ${this.token}`).set('Accept', 'application/json')
 					}
 				)
 				console.log(req.headers);
@@ -26,6 +26,5 @@ export class AuthTokenInterceptor implements HttpInterceptor {
 			return next.handle(req);
 		}
 	};
-
 
 }

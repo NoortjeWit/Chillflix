@@ -1,8 +1,11 @@
-<button (click)="getTestVideo()">get video</button>
-<div *ngIf="videoHeaderTest">
-	<h4>Logged in</h4>
-	<p>{{ videoHeaderTest | async | json }}</p>
-</div>
+
+<!-- <div class="container my-3 mx-auto text-center">
+  <button (click)="getTestVideo()">get video</button>
+  <div *ngIf="videoHeaderTest">
+    <p>Logged in</p>
+    <p>{{ videoHeaderTest | async | json }}</p>
+  </div>
+</div> -->
 
 <!-- searched videos list -->
 <h3 *ngIf="searchService.getSearchText() != undefined">Search results</h3>
@@ -14,6 +17,11 @@
 	id="app-preview"></app-preview>
 
 <!-- genre video bars -->
+<div *ngIf="loginService.user" >
+  <h3 class="pt-3">My Liked Videos</h3>
+  <app-video-list *ngIf="loginService.user" [videoList]="videosLiked | async"></app-video-list>
+</div>
+
 <h3 class="pt-3">Music</h3>
 <app-video-list [videoList]="videosMusic | async"></app-video-list>
 

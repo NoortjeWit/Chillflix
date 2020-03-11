@@ -16,7 +16,7 @@ import { AuthTokenInterceptor } from './shared/oauth-token-header.interceptor';
 
 const google_oauth_client_id: string = '654208204631-94fdph95gsm7dfvmtfjq7egpa41fcsk3.apps.googleusercontent.com';
 const googleLoginOptions: any = {
-  scope: 'https://www.googleapis.com/auth/youtube.readonly'
+  scope: 'https://www.googleapis.com/auth/youtube.readonly https://www.googleapis.com/auth/youtubepartner https://www.googleapis.com/auth/youtube https://www.googleapis.com/auth/youtube.force-ssl'
 };
 let config = new AuthServiceConfig([
   {
