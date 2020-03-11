@@ -1,4 +1,5 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { LoginService } from '../shared/login.service';
 
 @Component({
   selector: 'app-nav-bar',
@@ -8,7 +9,7 @@ import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 export class NavBarComponent implements OnInit {
 
 
-  constructor() { }
+  constructor(public loginService: LoginService) { }
 
   ngOnInit() {
   }

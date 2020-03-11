@@ -9,7 +9,9 @@ export class LoginService implements OnInit {
   loggedIn: boolean;
   adminAccount: boolean;
 
-  constructor(private authService: AuthService, ) { }
+  constructor(private authService: AuthService, ) {
+    console.log("admin? " + this.adminAccount)
+  }
 
   ngOnInit(): void {
     this.adminAccount = false;
@@ -17,7 +19,7 @@ export class LoginService implements OnInit {
       console.log(user);
       this.user = user;
       this.loggedIn = (user != null);
-      if (this.user.email == "chantalschot91@gmail.com") {
+      if (user.email == "chantalschot91@gmail.com") {
         this.adminAccount = true;
       };
     });
