@@ -1,4 +1,4 @@
-import { categories } from './stubs/categories';
+import { categories } from "./stubs/categories";
 import { Injectable } from "@angular/core";
 import { IVideo } from "../video-module/video/video.interface";
 import { returnVideoListStubs } from "./stubs/videos";
@@ -14,6 +14,7 @@ export class VideoListService {
   // private apiKey: string = "AIzaSyDVKO0BdJZ-QN0iFju-0VPUjGS9LutIOo0";
   //private apiKey: string = "AIzaSyBWyCSXgf_0tXnmavsH9lRhcxV5aPA3SKM";
   private apiKey: string = "AIzaSyBzcxTIAnAie2aFS_BD2KuXncrwChVLNDQ";
+  private url: string;
 
   //private videos: IVideo[] = videos;
   private videos: IVideo[];
@@ -23,7 +24,6 @@ export class VideoListService {
   constructor(private client: HttpClient) {
     if (environment.enableStub) {
       this.categoryList = categories;
-
     } else {
       this.client
         .get(
@@ -34,7 +34,6 @@ export class VideoListService {
           console.log(message);
         });
     }
-
   }
 
   getVideos() {
@@ -50,11 +49,16 @@ export class VideoListService {
   }
 
   setFilteredVideos2(searchText: string) {
-    //const url = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&type=video&q=${searchText}&key=${this.apiKey}`;
-    const url = `http://localhost:4200/assets/searchData.json`;
+    if (environment.enableStub) {
+      console.log("stubs enabled");
+      this.url = `http://localhost:4200/assets/searchData.json`;
+    } else {
+      this.url = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&type=video&q=${searchText}&key=${this.apiKey}`;
+    }
+
     this.filteredVideos = EMPTY;
 
-    this.filteredVideos = this.client.get(url).pipe(
+    this.filteredVideos = this.client.get(this.url).pipe(
       map((value: any) => {
         // console.log(value);
         return value.items.map(item => {
@@ -74,17 +78,13 @@ export class VideoListService {
     );
 
     // this.filteredVideos.subscribe(item => console.log(item));
-
-
   }
-
 
   getPopularVideos(): Observable<IVideo[]> {
     if (environment.enableStub) {
       console.log("stubs enabled");
       return returnVideoListStubs();
-    }
-    else {
+    } else {
       const url = `https://www.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=5&key=${this.apiKey}`;
 
       return this.youtubeGetQuery(url);
@@ -122,8 +122,6 @@ export class VideoListService {
       }
     }
   }
-
-
 
   youtubeGetQuery(url): Observable<IVideo[]> {
     return this.client.get(url).pipe(

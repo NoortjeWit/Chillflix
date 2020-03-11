@@ -1,5 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
+import { environment } from "src/environments/environment";
+import { videos} from '../shared/stubs/videos';
+import { IVideo } from '../video-module/video/video.interface';
 
 @Component({
   selector: "app-admin",
@@ -24,11 +27,17 @@ export class AdminComponent implements OnInit {
 
   saveMovie() {
     console.log(this.addMovieForm.value);
-    console.log(this.addMovieForm);
+
+    if (environment.enableStub) {
+      console.log("stubs enabled");
+      videos.push(this.addMovieForm.value as IVideo);
+      this.addMovieForm.reset();
+    }
+
   }
 
   formChanged() {
-  
+
     return !this.addMovieForm.touched;
   }
 }

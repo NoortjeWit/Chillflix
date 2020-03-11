@@ -1,0 +1,13 @@
+.img-title{
+  vertical-align: middle;
+  font-weight: bold;
+}
+
+.img-description{
+  font-size: small;
+  font-weight: 200;
+}
+
+.container:hover{
+  cursor: pointer;
+}
