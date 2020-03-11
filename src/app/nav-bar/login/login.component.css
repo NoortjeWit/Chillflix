@@ -2,6 +2,11 @@
     display: block;
 }
 
-.dropdown-item {
+.dropdown-item,
+.nav-link {
     cursor: pointer;
+}
+
+img {
+    border-radius: 50%;
 }
