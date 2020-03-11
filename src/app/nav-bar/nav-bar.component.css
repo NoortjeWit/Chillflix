@@ -1,3 +1,7 @@
 .dropdown:hover .dropdown-menu {
   display: block;
 }
+
+.sizing{
+  width:350px;
+}

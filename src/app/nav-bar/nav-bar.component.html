@@ -23,9 +23,11 @@
           aria-haspopup="true" aria-expanded="false">
           <i class="fa fa-bell fa-2x" aria-hidden="true"></i>
         </a>
-        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Suggestion 1</a>
-          <a class="dropdown-item" href="#">Suggestion 2</a>
+        <div class="dropdown-menu dropdown-menu-right sizing bg-light" aria-labelledby="navbarDropdown">
+          <h4 class="p-3 text-center ">Suggested for you:</h4>
+          <div class="dropdown-divider"></div>
+          <app-videoSuggestion [video]="videoSuggestion" (click)="selectVideo(videoSuggestion)" ></app-videoSuggestion>
+          <app-videoSuggestion [video]="videoSuggestion2" (click)="selectVideo(videoSuggestion2)"></app-videoSuggestion>
         </div>
       </li>
       <app-login> </app-login>
