@@ -12,8 +12,7 @@
       <a class="nav-item nav-link" [routerLink]="['/home']">Movies</a>
       <a class="nav-item nav-link" [routerLink]="['/home']">Series</a>
       <a class="nav-item nav-link disabled" href="#"><i class="fa fa-star" aria-hidden="true"></i> Favorites</a>
-      <a class="nav-item nav-link" [routerLink]="['/admin']">Admin</a>
-      <a> {{ loginService.adminAccount }} </a>
+      <a class="nav-item nav-link" [routerLink]="['/admin']" *ngIf="loginService.isAdmin()">Admin</a>
     </div>
 
     <app-search-bar class="ml-auto"></app-search-bar>
