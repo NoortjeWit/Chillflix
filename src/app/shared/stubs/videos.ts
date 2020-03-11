@@ -1,7 +1,7 @@
 import { IVideo } from "./../../video-module/video/video.interface";
 import { Observable, of } from "rxjs";
 
-export const videos: IVideo[] = [
+export let videos: IVideo[] = [
   {
     title: "The Lion King",
     type: "film",

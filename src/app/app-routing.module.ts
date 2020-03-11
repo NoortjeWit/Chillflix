@@ -6,10 +6,11 @@ import { RouterModule, Routes } from '@angular/router';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { AdminComponent } from './admin-module/admin.component';
 import { FormfillGuard } from './formfill.guard';
+import { AdminGuard} from './admin.guard';
 
 const appRoutes: Routes = [
   { path: "home", component: HomeComponent },
-  { path: "admin", component: AdminComponent, canDeactivate: [FormfillGuard] },
+  { path: "admin", component: AdminComponent, canActivate: [AdminGuard], canDeactivate: [FormfillGuard] },
   { path: "", redirectTo: "/home", pathMatch: "full" },
   { path: "**", component: NotFoundComponent },
 ]
