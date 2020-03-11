@@ -7,21 +7,15 @@ import { SocialUser, AuthService, GoogleLoginProvider } from 'angularx-social-lo
 export class LoginService implements OnInit {
   user: SocialUser;
   loggedIn: boolean;
-  adminAccount: boolean;
 
   constructor(private authService: AuthService, ) {
-    console.log("admin? " + this.adminAccount)
   }
 
   ngOnInit(): void {
-    this.adminAccount = false;
     this.authService.authState.subscribe((user) => {
       console.log(user);
       this.user = user;
       this.loggedIn = (user != null);
-      if (user.email == "chantalschot91@gmail.com") {
-        this.adminAccount = true;
-      };
     });
   }
 
@@ -33,6 +27,7 @@ export class LoginService implements OnInit {
       (response) => {
         console.log(platform + " logged in user data is= ", response);
         this.user = response;
+        this.loggedIn = (response != null);
       }
     );
   }
@@ -42,4 +37,15 @@ export class LoginService implements OnInit {
     this.user = null;
     console.log('User signed out.');
   }
+
+  isAdmin(): boolean {
+    if (this.user) {
+      if (this.user.email == "chantalschot91@gmail.com" || this.user.email == "noortjewittink@gmail.com") {
+        return true;
+      }
+    } else {
+      return false;
+    }
+  }
+
 }
