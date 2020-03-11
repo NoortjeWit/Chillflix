@@ -43,6 +43,9 @@ export class LoginService implements OnInit {
       if (this.user.email == "chantalschot91@gmail.com" || this.user.email == "noortjewittink@gmail.com") {
         return true;
       }
+      else{
+        return false;
+      }
     } else {
       return false;
     }
