@@ -1,3 +1,4 @@
+import { LoginComponent } from './login/login.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NavBarComponent } from './nav-bar.component';
@@ -8,7 +9,7 @@ import { SearchBarComponent } from './search-bar/search-bar.component';
   imports: [
     CommonModule
   ],
-  declarations: [NavBarComponent, SearchBarComponent],
+  declarations: [NavBarComponent, SearchBarComponent, LoginComponent],
   exports: [NavBarComponent, SearchBarComponent]
 })
 export class NavBarModule { }
