@@ -1,15 +1,13 @@
-<li class="nav-item dropdown">
-    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <i class="fa fa-user-circle fa-2x" aria-hidden="true"></i>
+<li *ngIf="loginService.user" class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <i><img width="32px" height="32px" src="{{ loginService.user.photoUrl }}"
+    /></i>
     </a>
-
-    <div *ngIf="loginService.user" class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-        <span class="dropdown-item"><img src="{{ loginService.user.photoUrl }}"
-    /></span>
+    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
         <span class="dropdown-item">Welcome, {{ loginService.user.name }}</span>
-        <a class="dropdown-item" href="#"><i class="fa fa-users" aria-hidden="true"></i> Accounts</a
+        <a class="dropdown-item"><i class="fa fa-users" aria-hidden="true"></i> Accounts</a
     >
-    <a class="dropdown-item" href="#"
+    <a class="dropdown-item"
       ><i class="fa fa-cog" aria-hidden="true"></i> Settings</a
     >
     <div class="dropdown-divider"></div>
@@ -17,14 +15,21 @@
       ><i class="fa fa-sign-out" aria-hidden="true"></i> Log out</span
     >
   </div>
+</li>
 
-  <div
-    *ngIf="!loginService.user"
-    class="dropdown-menu dropdown-menu-right"
-    aria-labelledby="navbarDropdown"
+<li *ngIf="!loginService.user" class="nav-item dropdown">
+  <a
+    class="nav-link dropdown-toggle"
+    id="navbarDropdown"
+    role="button"
+    data-toggle="dropdown"
+    aria-haspopup="true"
+    aria-expanded="false"
   >
-    <span class="dropdown-item" (click)="loginService.signInWithGoogle()"
-      ><i class="fa fa-users" aria-hidden="true"></i> Log in</span
+    <i class="fa fa-user-circle fa-2x" aria-hidden="true"></i>
+  </a>
+        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+            <span class="dropdown-item" (click)="loginService.signInWithGoogle()"><i class="fa fa-users" aria-hidden="true"></i> Log in</span
     >
   </div>
 </li>
