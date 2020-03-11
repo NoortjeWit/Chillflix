@@ -5,10 +5,11 @@ import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { AdminComponent } from './admin-module/admin.component';
+import { FormfillGuard } from './formfill.guard';
 
 const appRoutes: Routes = [
   { path: "home", component: HomeComponent },
-  { path: "admin", component: AdminComponent },
+  { path: "admin", component: AdminComponent, canDeactivate: [FormfillGuard] },
   { path: "", redirectTo: "/home", pathMatch: "full" },
   { path: "**", component: NotFoundComponent },
 ]
@@ -24,6 +25,7 @@ const appRoutes: Routes = [
   ],
   exports: [
     RouterModule
-  ]
+  ],
+  providers: [FormfillGuard]
 })
 export class AppRoutingModule { }
