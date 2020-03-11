@@ -1,9 +1,17 @@
+<button (click)="getTestVideo()">get video</button>
+<div *ngIf="videoHeaderTest">
+	<h4>Logged in</h4>
+	<p>{{ videoHeaderTest | async | json }}</p>
+</div>
+
 <!-- searched videos list -->
 <h3 *ngIf="searchService.getSearchText() != undefined">Search results</h3>
-<app-video-list *ngIf="searchService.getSearchText() != undefined" [videoList]="lookForStuff() | async" class="py-3 mx-3 my-3"></app-video-list>
+<app-video-list *ngIf="searchService.getSearchText() != undefined" [videoList]="lookForStuff() | async"
+	class="py-3 mx-3 my-3"></app-video-list>
 
 <!-- preview of selected video -->
-<app-preview *ngIf="previewService.getSelectedVideo() != undefined" [video]="previewService.getSelectedVideo()" id="app-preview"></app-preview>
+<app-preview *ngIf="previewService.getSelectedVideo() != undefined" [video]="previewService.getSelectedVideo()"
+	id="app-preview"></app-preview>
 
 <!-- genre video bars -->
 <h3 class="pt-3">Music</h3>

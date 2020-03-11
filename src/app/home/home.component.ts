@@ -1,3 +1,4 @@
+import { LoginService } from './../shared/login.service';
 import { Component, OnInit } from '@angular/core';
 import { Observable, EMPTY } from 'rxjs';
 import { IVideo } from '../video-module/video/video.interface';
@@ -21,7 +22,10 @@ export class HomeComponent implements OnInit {
   filteredVideos: Observable<IVideo[]>;
   selectedVideo: IVideo;
 
-  constructor(public videoService: VideoListService, public searchService: SearchTextService, public previewService: PreviewService) {
+
+  videoHeaderTest: Observable<IVideo[]>;
+
+  constructor(public videoService: VideoListService, public searchService: SearchTextService, public previewService: PreviewService, public loginService: LoginService) {
   }
 
   ngOnInit() {
@@ -42,6 +46,10 @@ export class HomeComponent implements OnInit {
     else {
       return EMPTY;
     }
+  }
+
+  getTestVideo() {
+    this.videoHeaderTest = this.videoService.getSingleVideoTest();
   }
 
 }

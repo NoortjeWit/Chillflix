@@ -1,35 +1,25 @@
 <li *ngIf="loginService.user" class="nav-item dropdown">
-    <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <i><img width="32px" height="32px" src="{{ loginService.user.photoUrl }}"
-    /></i>
-    </a>
-    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-        <span class="dropdown-item">Welcome, {{ loginService.user.name }}</span>
-        <a class="dropdown-item"><i class="fa fa-users" aria-hidden="true"></i> Accounts</a
-    >
-    <a class="dropdown-item"
-      ><i class="fa fa-cog" aria-hidden="true"></i> Settings</a
-    >
+  <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+    aria-expanded="false">
+    <i><img width="32px" height="32px" src="{{ loginService.user.photoUrl }}" /></i>
+  </a>
+  <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+    <span class="dropdown-item">Welcome, {{ loginService.user.name }}</span>
+    <a class="dropdown-item"><i class="fa fa-users" aria-hidden="true"></i> Accounts</a>
+    <a class="dropdown-item"><i class="fa fa-cog" aria-hidden="true"></i> Settings</a>
     <div class="dropdown-divider"></div>
-    <span class="dropdown-item" (click)="loginService.signOut()"
-      ><i class="fa fa-sign-out" aria-hidden="true"></i> Log out</span
-    >
+    <span class="dropdown-item" (click)="loginService.signOut()" [routerLink]="['/home']"><i class="fa fa-sign-out"
+        aria-hidden="true"></i> Log out</span>
   </div>
 </li>
 
 <li *ngIf="!loginService.user" class="nav-item dropdown">
-  <a
-    class="nav-link dropdown-toggle"
-    id="navbarDropdown"
-    role="button"
-    data-toggle="dropdown"
-    aria-haspopup="true"
-    aria-expanded="false"
-  >
+  <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+    aria-expanded="false">
     <i class="fa fa-user-circle fa-2x" aria-hidden="true"></i>
   </a>
-        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-            <span class="dropdown-item" (click)="loginService.signInWithGoogle()"><i class="fa fa-users" aria-hidden="true"></i> Log in</span
-    >
+  <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+    <span class="dropdown-item" (click)="loginService.signInWithGoogle()"><i class="fa fa-sign-in"
+        aria-hidden="true"></i> Log in</span>
   </div>
 </li>

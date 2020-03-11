@@ -107,6 +107,12 @@ export class VideoListService {
     // Here do the real call
   }
 
+  getSingleVideoTest() {
+    const url = `https://www.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&id=Ks-_Mh1QhMc&key=${this.apiKey}`;
+
+    return this.youtubeGetQuery(url);
+  }
+
   findCategory(categoryId: string) {
     if (this.categoryList) {
       for (let x in this.categoryList.items) {
