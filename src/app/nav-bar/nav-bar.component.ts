@@ -3,6 +3,7 @@ import { LoginService } from "../shared/login.service";
 import { videos } from "../shared/stubs/videos";
 import { IVideo } from "../video-module/video/video.interface";
 import { PreviewService } from "../shared/preview.service";
+import { VideoListService } from '../shared/video-list.service';
 
 @Component({
   selector: "app-nav-bar",
@@ -15,7 +16,8 @@ export class NavBarComponent implements OnInit {
 
   constructor(
     public loginService: LoginService,
-    public previewService: PreviewService
+    public previewService: PreviewService,
+    public videoService: VideoListService
   ) {}
 
   ngOnInit() {
@@ -31,11 +33,17 @@ export class NavBarComponent implements OnInit {
     window.scroll(0, 0);
   }
 
-  getRandomInt(max, num?) {
+  showFavorites(){
+    this.videoService.showFavorites = !this.videoService.showFavorites;
+  }
+
+
+  getRandomInt(max, num?: number) {
     let rand = Math.floor(Math.random() * Math.floor(max));
-    if (num) {
+    if (num != undefined) {
       while (rand == num) {
         rand = Math.floor(Math.random() * Math.floor(max));
+        console.log(rand, num);
       }
     }
     return rand;

@@ -17,7 +17,7 @@
 	id="app-preview"></app-preview>
 
 <!-- genre video bars -->
-<div *ngIf="loginService.user" >
+<div *ngIf="videoService.showFavorites" >
   <h3 class="pt-3">My Liked Videos</h3>
   <app-video-list *ngIf="loginService.user" [videoList]="videosLiked | async"></app-video-list>
 </div>

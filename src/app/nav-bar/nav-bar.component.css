@@ -5,3 +5,7 @@
 .sizing{
   width:350px;
 }
+
+.nav-link:hover, .navbar-brand{
+  cursor: pointer;
+}

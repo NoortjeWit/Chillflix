@@ -20,6 +20,7 @@ export class VideoListService {
   private videos: IVideo[];
   private filteredVideos: Observable<IVideo[]>;
   private categoryList: any;
+  showFavorites: boolean;
 
   constructor(private client: HttpClient) {
     if (environment.enableStub) {
@@ -115,6 +116,9 @@ export class VideoListService {
 
   getLikedVideos() {
     if (environment.enableStub) {
+      // const url = `https://www.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&maxResults=5&myRating=like`;
+
+      // return this.youtubeGetQuery(url);
 
     } else {
       const url = `https://www.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&maxResults=5&myRating=like`;

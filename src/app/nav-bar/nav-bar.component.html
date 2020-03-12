@@ -11,7 +11,8 @@
     <div class="navbar-nav" routerLinkActive="active">
       <a class="nav-item nav-link" [routerLink]="['/home']">Movies</a>
       <a class="nav-item nav-link" [routerLink]="['/home']">Series</a>
-      <a class="nav-item nav-link disabled" href="#"><i class="fa fa-star" aria-hidden="true"></i> Favorites</a>
+      <a class="nav-item nav-link disabled" [routerLink]="['/home']" *ngIf="!loginService.user"><i class="fa fa-star" aria-hidden="true"></i> Favorites</a>
+      <a class="nav-item nav-link" *ngIf="loginService.user" (click)='showFavorites()'><i class="fa fa-star"></i> Favorites</a>
       <a class="nav-item nav-link" [routerLink]="['/admin']" *ngIf="loginService.isAdmin()">Admin</a>
     </div>
 
