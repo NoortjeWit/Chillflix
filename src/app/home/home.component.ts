@@ -52,7 +52,7 @@ export class HomeComponent implements OnInit {
   }
 
   getTestVideo() {
-    this.videoHeaderTest = this.videoService.getSingleVideoTest();
+    // this.videoHeaderTest = this.videoService.getSingleVideoTest();
   }
 
 }
