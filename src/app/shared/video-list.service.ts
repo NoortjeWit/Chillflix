@@ -25,15 +25,15 @@ export class VideoListService {
   constructor(private client: HttpClient) {
     if (environment.enableStub) {
       this.categoryList = categories;
-    } else {
-      this.client
-        .get(
-          `https://www.googleapis.com/youtube/v3/videoCategories?part=snippet&regionCode=US&key=${this.apiKey}`
-        )
-        .subscribe(message => {
-          this.categoryList = message;
-          console.log(message);
-        });
+      // } else {
+      //   this.client
+      //     .get(
+      //       `https://www.googleapis.com/youtube/v3/videoCategories?part=snippet&regionCode=US&key=${this.apiKey}`
+      //     )
+      //     .subscribe(message => {
+      //       this.categoryList = message;
+      //       console.log(message);
+      //     });
     }
   }
 
