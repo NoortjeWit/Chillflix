@@ -1,5 +1,5 @@
 import { categories } from "./stubs/categories";
-import { Injectable } from "@angular/core";
+import { Injectable, OnInit } from "@angular/core";
 import { IVideo } from "../video-module/video/video.interface";
 import { returnVideoListStubs } from "./stubs/videos";
 import { HttpClient } from "@angular/common/http";
@@ -10,40 +10,35 @@ import { environment } from "src/environments/environment";
 @Injectable({
   providedIn: "root"
 })
-export class VideoListService {
-  // private apiKey: string = "AIzaSyDVKO0BdJZ-QN0iFju-0VPUjGS9LutIOo0";
+export class VideoListService implements OnInit {
+  private apiKey: string = "AIzaSyDVKO0BdJZ-QN0iFju-0VPUjGS9LutIOo0";
   //private apiKey: string = "AIzaSyBWyCSXgf_0tXnmavsH9lRhcxV5aPA3SKM";
-  private apiKey: string = "AIzaSyBzcxTIAnAie2aFS_BD2KuXncrwChVLNDQ";
+  //private apiKey: string = "AIzaSyBzcxTIAnAie2aFS_BD2KuXncrwChVLNDQ";
   private url: string;
 
-  //private videos: IVideo[] = videos;
-  private videos: IVideo[];
   private filteredVideos: Observable<IVideo[]>;
   private categoryList: any;
   showFavorites: boolean;
 
   constructor(private client: HttpClient) {
+
+  }
+
+  ngOnInit(){
     if (environment.enableStub) {
       this.categoryList = categories;
-      // } else {
-      //   this.client
-      //     .get(
-      //       `https://www.googleapis.com/youtube/v3/videoCategories?part=snippet&regionCode=US&key=${this.apiKey}`
-      //     )
-      //     .subscribe(message => {
-      //       this.categoryList = message;
-      //       console.log(message);
-      //     });
     }
+    else {
+      this.client.get(`https://www.googleapis.com/youtube/v3/videoCategories?part=snippet&regionCode=US&key=${this.apiKey}`)
+        .subscribe(message => {
+          this.categoryList = message;
+          console.log(message);
+        });
+    }
+
   }
 
-  getVideos() {
-    return this.videos;
-  }
 
-  addVideo(video: IVideo) {
-    this.videos.push(video);
-  }
 
   getFilteredVideos(): Observable<IVideo[]> {
     return this.filteredVideos;
@@ -57,13 +52,14 @@ export class VideoListService {
       this.url = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&type=video&q=${searchText}&key=${this.apiKey}`;
     }
 
-    this.filteredVideos = EMPTY;
+
+    //this.filteredVideos = EMPTY;
 
     this.filteredVideos = this.client.get(this.url).pipe(
       map((value: any) => {
         // console.log(value);
         return value.items.map(item => {
-          // console.log(item);
+           //console.log(item);
           return {
             title: item.snippet.title,
             videoId: item.id.videoId,
@@ -78,7 +74,7 @@ export class VideoListService {
       })
     );
 
-    // this.filteredVideos.subscribe(item => console.log(item));
+    this.filteredVideos.subscribe(item => console.log(item));
   }
 
   getPopularVideos(): Observable<IVideo[]> {
