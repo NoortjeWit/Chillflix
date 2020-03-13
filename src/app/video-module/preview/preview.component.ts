@@ -14,7 +14,7 @@ export class PreviewComponent implements OnInit {
   constructor(public previewService: PreviewService) { }
 
   ngOnInit(): void {
-    this.video = this.previewService.getSelectedVideo();
+
   }
 
   descriptionLength(): void {
